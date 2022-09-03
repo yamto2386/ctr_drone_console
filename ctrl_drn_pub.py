@@ -4,6 +4,9 @@
 ## to the 'chatter' topic
 
 import rospy
+import keyboard
+
+
 from std_msgs.msg import String
 
 def go(self):
@@ -81,9 +84,9 @@ def restart(self):
 class Test:
 	def __init__(self):
 		self.pub = rospy.Publisher('cmd', String, queue_size=10)
-		self.init_node('talker', anonymous=True) #genarate node
+		self.node = rospy.init_node('talker', anonymous=True) #genarate node
 		self.rate = rospy.Rate(100)
-		self.ctrl_key 
+		self.ctrl_key = ''
     	
 		
 	def controll_drone(self):
@@ -91,7 +94,7 @@ class Test:
 #        hello_str = "hello world %s" % rospy.get_time()
 #        rospy.loginfo(hello_str)
 #        pub.publish(hello_str)
-			self.ctrl_key = input()
+			self.ctrl_key = keyboard.read_key()
 			key = self.ctrl_key
 	
 			if key == 'w':	#press w to go forward
