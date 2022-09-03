@@ -4,9 +4,6 @@
 ## to the 'chatter' topic
 
 import rospy
-import keyboard
-
-
 from std_msgs.msg import String
 
 def go(self):
@@ -22,13 +19,13 @@ def back(self):
 	print("back")
 
 def right(self):
-	d = 'right'
+	r = 'right'
 	self.pub.publish(r)
 	rospy.loginfo(r)
 	print("right")
 
 def left(self):
-	a = 'left'
+	l = 'left'
 	self.pub.publish(l)
 	rospy.loginfo(l)
 	print("left")
@@ -94,7 +91,7 @@ class Test:
 #        hello_str = "hello world %s" % rospy.get_time()
 #        rospy.loginfo(hello_str)
 #        pub.publish(hello_str)
-			self.ctrl_key = keyboard.read_key()
+			self.ctrl_key = raw_input()
 			key = self.ctrl_key
 	
 			if key == 'w':	#press w to go forward
