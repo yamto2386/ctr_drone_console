@@ -7,7 +7,7 @@ import rospy
 from std_msgs.msg import String
 
 def go(self):
-	w = 'go' #get_time() 現在時間を取得　秒単位
+	w = 'go' 
 	self.pub.publish(w) #publish x and y
 	rospy.loginfo(w) #print x and y ,current time
 	print("foward")
@@ -81,13 +81,7 @@ def restart(self):
 class Test:
 	def __init__(self):
 		self.pub = rospy.Publisher('cmd', String, queue_size=10)
-	#topicに、'cmd'という名前を与え、Stringというそのtopicを介して送るメッセージ型を指定している。
-	#queue_size=10という引数は、rospyがバッファリングする配信メッセージの数指定である。続き↓
-	#メッセージを送信する側のノードが受信する側のノードが受け取れる頻度より高い頻度でメッセージを送信した場合には、rospyはqueue_sizeを超えるメッセージを切り捨てる。
 		self.init_node('talker', anonymous=True) #genarate node
-	#anonymousをTrueにしておく理由
-	#ROSネットワークでは同じ名前のノードが接続してきた場合、古いノードは接続を強制的に切られる。anonymousをTrueにしておくと、ノード名を自動で変更して複数接続可能になる。
-	#そのため、このファイルは複数立ち上げてもつながる。
 		self.rate = rospy.Rate(100)
 		self.ctrl_key 
     	
